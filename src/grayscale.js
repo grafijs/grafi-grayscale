@@ -49,7 +49,7 @@ function grayscale (imgData, option) {
     _index = i * 4
     _grayscaled = mode[option.mode](imgData.data[_index], imgData.data[_index + 1], imgData.data[_index + 2])
     if (option.monochrome) {
-      newPixelData[_index] = _grayscaled
+      newPixelData[i] = _grayscaled
       continue
     }
     newPixelData[_index] = _grayscaled
