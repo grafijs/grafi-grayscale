@@ -3,22 +3,39 @@
   <h1>original</h1>
   <img id="original">
   <h1>processed</h1>
-  <canvas id="canvas"></canvas>
+  <h2>Luma mode</h2>
+  <canvas id="luma"></canvas>
+  <h2>Simple mode</h2>
+  <canvas id="simple"></canvas>
+  <h2>Average mode</h2>
+  <canvas id="average"></canvas>
   <script src="grafi-grayscale.js"></script>
   <script>
     var original = document.getElementById('original')
-    var output = document.getElementById('canvas')
-    var outputCtx = output.getContext('2d')
+    var luma = document.getElementById('luma')
+    var simple = document.getElementById('simple')
+    var average = document.getElementById('average')
+    var lumaCtx = luma.getContext('2d')
+    var simpleCtx = simple.getContext('2d')
+    var averageCtx = average.getContext('2d')
     var reader = new FileReader()
     reader.onload = function() {
       original.src = reader.result
     }
     original.onload = function () {
-      output.width = original.width
-      output.height = original.height
-      outputCtx.drawImage(original, 0, 0)
-      newImage = grafi.grayscale(outputCtx.getImageData(0, 0, original.width, original.height))
-      outputCtx.putImageData(newImage, 0, 0)
+      luma.width = original.width
+      luma.height = original.height
+      simple.width = original.width
+      simple.height = original.height
+      average.width = original.width
+      average.height = original.height
+      lumaCtx.drawImage(original, 0, 0)
+      lumaImage = grafi.grayscale(lumaCtx.getImageData(0, 0, original.width, original.height))
+      simpleImage = grafi.grayscale(lumaCtx.getImageData(0, 0, original.width, original.height), {mode: 'simple'})
+      averageImage = grafi.grayscale(lumaCtx.getImageData(0, 0, original.width, original.height), {mode: 'average'})
+      lumaCtx.putImageData(lumaImage, 0, 0)
+      simpleCtx.putImageData(simpleImage, 0, 0)
+      averageCtx.putImageData(averageImage, 0, 0)
     }
   </script>
 
