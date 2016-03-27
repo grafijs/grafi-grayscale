@@ -38,7 +38,7 @@
 
     // If window is avilable create ImageData using browser API,
     // otherwise call ImageData constructor
-    if (typeof window === 'object') {
+    if (typeof window === 'object' && colorDepth === 4) {
       return new window.ImageData(pixelData, width, height)
     }
     return new ImageData(pixelData, width, height)
