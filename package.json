@@ -1,0 +1,34 @@
+{
+  "name": "grafi-grayscale",
+  "version": "0.0.0",
+  "description": "",
+  "main": "grafi-grayscale.js",
+  "scripts": {
+    "test": "node grafi-grayscale.test.js",
+    "build": "./node_modules/.bin/rollup -f umd -n grafi -o grafi-grayscale.js -- ./src/_blueprint.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grafijs/grafi-grayscale.git"
+  },
+  "keywords": [
+    "grafi",
+    "images",
+    "image",
+    "graphics",
+    "graphic",
+    "canvas"
+  ],
+  "author": "The Grafi Project Contributors (http://grafijs.org/)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/grafijs/grafi/issues"
+  },
+  "homepage": "https://github.com/grafijs/grafi-grayscale#readme",
+  "devDependencies": {
+    "rollup": "0.25.6"
+  },
+  "dependencies": {
+    "grafi-formatter": "git://github.com/grafijs/grafi-formatter.git"
+  }
+}
