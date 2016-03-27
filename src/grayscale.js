@@ -1,5 +1,3 @@
-import formatter from '../node_modules/grafi-formatter/src/formatter'
-
 /**
   ## grayscale method
   Grayscale color of an given image.
@@ -17,7 +15,7 @@ import formatter from '../node_modules/grafi-formatter/src/formatter'
       // Since monochrome flag is true, returned object will have smaller data
       // ImageData { data: Uint8ClampedArray[100], width: 10, height: 10, }
  */
-export default function grayscale (imgData, option) {
+function grayscale (imgData, option) {
   // set check options object & set default options if necessary
   option = option || {}
   option.mode = option.mode || 'luma'

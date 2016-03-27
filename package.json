@@ -5,7 +5,7 @@
   "main": "grafi-grayscale.js",
   "scripts": {
     "test": "node grafi-grayscale.test.js",
-    "build": "./node_modules/.bin/rollup -f umd -n grafi -o grafi-grayscale.js -- ./src/_blueprint.js"
+    "build": "node_modules/.bin/smash src/_blueprint.js | node_modules/.bin/standard-format - > grafi-grayscale.js"
   },
   "repository": {
     "type": "git",
@@ -26,9 +26,8 @@
   },
   "homepage": "https://github.com/grafijs/grafi-grayscale#readme",
   "devDependencies": {
-    "rollup": "0.25.6"
-  },
-  "dependencies": {
+    "smash": "0.0.15",
+    "standard-format": "2.1.1",
     "grafi-formatter": "git://github.com/grafijs/grafi-formatter.git"
   }
 }
