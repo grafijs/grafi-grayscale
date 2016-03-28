@@ -17,7 +17,7 @@ assert(monoData.data.length / (monoData.width * monoData.height) === 1,
   'when monochrome flag is true, returned image data is single color channel')
 
 assert(lumaData.data[0] === lumaData.data[1] && lumaData.data[0] === lumaData.data[2],
-  'for RGBA mode, red, gree, and blue has same value')
+  'for RGBA mode, red, green, and blue has same value')
 
 assert(lumaData.data[3] === inputData.data[3],
   'for RGBA mode, alpha channel is not altered')
