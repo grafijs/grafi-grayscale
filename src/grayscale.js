@@ -20,14 +20,15 @@ function grayscale (imgData, option) {
   option = option || {}
   option.mode = option.mode || 'luma'
   option.monochrome = option.monochrome || false
+  option.channel = Number(option.channel) || 1
 
   // different grayscale methods
   var mode = {
     'luma': function (r, g, b) {
       return 0.299 * r + 0.587 * g + 0.114 * b
     },
-    'simple': function (r, g, b) {
-      return g
+    'simple': function (r, g, b, a, c) {
+      return arguments[c]
     },
     'average': function (r, g, b) {
       return (r + g + b) / 3
@@ -47,7 +48,7 @@ function grayscale (imgData, option) {
   // loop through pixel size, extract r, g, b values & calculate grayscaled value
   for (i = 0; i < pixelSize; i++) {
     _index = i * 4
-    _grayscaled = mode[option.mode](imgData.data[_index], imgData.data[_index + 1], imgData.data[_index + 2])
+    _grayscaled = mode[option.mode](imgData.data[_index], imgData.data[_index + 1], imgData.data[_index + 2], imgData.data[_index + 3], option.channel)
     if (option.monochrome) {
       newPixelData[i] = _grayscaled
       continue
