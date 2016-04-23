@@ -38,7 +38,7 @@ function grayscale (imgData, option) {
   }
 
   var pixelSize = imgData.width * imgData.height
-  var newPixelData = new Uint8ClampedArray(imgData.width * pixelSize * 4)
+  var newPixelData = new Uint8ClampedArray(pixelSize * 4)
   var i, _grayscaled, _index
 
   // loop through pixel size, extract r, g, b values & calculate grayscaled value
