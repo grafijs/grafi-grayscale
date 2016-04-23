@@ -68,13 +68,14 @@
       - imageData `Object`: ImageData object
       - option `Object` : Option object
           - mode `String` : grayscaling mode, 'luma', 'simple', or 'average'
-          - monochrome `Boolean` : output to be monochrome (single color depth) image
+          - channel `String` : color channel to use when in simple mode, 'r', 'g', or 'b'
 
     ### Example
-        var input = { data: Uint8ClampedArray[400], width: 10, height: 10, }
-        grafi.grayscale(input, {mode: 'average', monochrome: true})
-        // Since monochrome flag is true, returned object will have smaller data
-        // ImageData { data: Uint8ClampedArray[100], width: 10, height: 10, }
+        var input = { data: Uint8ClampedArray[400], width: 10, height: 10 }
+        // grayscale based on average of RGB colors
+        grafi.grayscale(input, {mode: 'average'})
+        // grayscale by repeating value of specified color channel across all channel
+        grafi.grayscale(input, {mode: 'simple', channel: 'r'})
    */
   function grayscale (imgData, option) {
     // sanitary check for input data
@@ -83,7 +84,7 @@
     // set check options object & set default options if necessary
     option = option || {}
     option.mode = option.mode || 'luma'
-    option.channel = Number(option.channel) || 1
+    option.channel = option.channel || 'g'
 
     // different grayscale methods
     var mode = {
@@ -91,7 +92,8 @@
         return 0.299 * r + 0.587 * g + 0.114 * b
       },
       'simple': function (r, g, b, a, c) {
-        return arguments[c]
+        var ref = {r: 0, g: 1, b: 2}
+        return arguments[ref[c]]
       },
       'average': function (r, g, b) {
         return (r + g + b) / 3

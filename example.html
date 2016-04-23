@@ -1,13 +1,14 @@
 <html>
   <input type="file" id="input" onchange="reader.readAsDataURL(this.files[0])">
-  <h1>original</h1>
+  <h1>grafi.js grayscale sample</h1>
+  <h2>original</h2>
   <img id="original">
-  <h1>processed</h1>
-  <h2>Luma mode</h2>
+  <h2>processed</h2>
+  <h3>Luma mode</h3>
   <canvas id="luma"></canvas>
-  <h2>Simple mode</h2>
+  <h3>Simple mode</h3>
   <canvas id="simple"></canvas>
-  <h2>Average mode</h2>
+  <h3>Average mode</h3>
   <canvas id="average"></canvas>
   <script src="grafi-grayscale.js"></script>
   <script>
@@ -31,7 +32,7 @@
       average.height = original.height
       lumaCtx.drawImage(original, 0, 0)
       lumaImage = grafi.grayscale(lumaCtx.getImageData(0, 0, original.width, original.height))
-      simpleImage = grafi.grayscale(lumaCtx.getImageData(0, 0, original.width, original.height), {mode: 'simple', channel: 0 })
+      simpleImage = grafi.grayscale(lumaCtx.getImageData(0, 0, original.width, original.height), {mode: 'simple', channel: 'r' })
       averageImage = grafi.grayscale(lumaCtx.getImageData(0, 0, original.width, original.height), {mode: 'average'})
       lumaCtx.putImageData(lumaImage, 0, 0)
       simpleCtx.putImageData(simpleImage, 0, 0)
