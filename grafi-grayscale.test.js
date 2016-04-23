@@ -2,19 +2,15 @@ var assert = require('assert')
 var grafi = require('./grafi-grayscale.js')
 
 var inputData = {data: [50, 100, 90, 255], width: 1, height: 1}
-var monoData = grafi.grayscale(inputData, {monochrome: true})
 var lumaData = grafi.grayscale(inputData, {mode: 'luma'})
 var simpleData = grafi.grayscale(inputData, {mode: 'simple'})
 var averageData = grafi.grayscale(inputData, {mode: 'average'})
 
-assert(monoData.constructor.toString().match(/function\s(\w*)/)[1] === 'ImageData',
-  'returned object is an instance of ImageData')
+assert(lumaData.constructor.toString().match(/function\s(\w*)/)[1] === 'GrafiImageData',
+  'returned object is an instance of GrafiImageData')
 
-assert(monoData.data[0] === monoData.data[0],
+assert(lumaData.data[0] === lumaData.data[0],
   'default mode is luma')
-
-assert(monoData.data.length / (monoData.width * monoData.height) === 1,
-  'when monochrome flag is true, returned image data is single color channel')
 
 assert(lumaData.data[0] === lumaData.data[1] && lumaData.data[0] === lumaData.data[2],
   'for RGBA mode, red, green, and blue has same value')

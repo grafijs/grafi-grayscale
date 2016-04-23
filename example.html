@@ -31,7 +31,7 @@
       average.height = original.height
       lumaCtx.drawImage(original, 0, 0)
       lumaImage = grafi.grayscale(lumaCtx.getImageData(0, 0, original.width, original.height))
-      simpleImage = grafi.grayscale(lumaCtx.getImageData(0, 0, original.width, original.height), {mode: 'simple', channel: 0})
+      simpleImage = grafi.grayscale(lumaCtx.getImageData(0, 0, original.width, original.height), {mode: 'simple', channel: 0 })
       averageImage = grafi.grayscale(lumaCtx.getImageData(0, 0, original.width, original.height), {mode: 'average'})
       lumaCtx.putImageData(lumaImage, 0, 0)
       simpleCtx.putImageData(simpleImage, 0, 0)

@@ -1,7 +1,7 @@
 {
   "name": "grafi-grayscale",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Grayscale module for grafi.js",
   "main": "grafi-grayscale.js",
   "scripts": {
     "test": "node grafi-grayscale.test.js",
